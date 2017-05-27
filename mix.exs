@@ -8,6 +8,8 @@ defmodule Parallex.Mixfile do
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps(),
+     description: description(),
+     package: package(),
      source_url: "https://github.com/ryanwinchester/parallex",
      name: "Parallex"]
   end
@@ -30,7 +32,7 @@ defmodule Parallex.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [{:ex_doc, ">= 0.0.0", only: :dev}]
   end
 
   defp description do
