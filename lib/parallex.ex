@@ -9,15 +9,15 @@ defmodule Parallex do
 
   ## Examples
 
-      iex> Parallex.pfilter([1, 2, 3, 4], fn x -> x < 4 end)
+      iex> Parallex.pfilter([1, 2, 3, 4], fn(x) -> x < 4 end)
       [1, 2, 3]
 
   """
   def pfilter(collection, func) do
-    iter = Enum.count(collection) - 1
     results = pmap(collection, func)
+    n = Enum.count(collection) - 1
 
-    Enum.reduce(0..iter, [],
+    Enum.reduce(0..n, [],
       fn i, acc ->
         cond do
           Enum.at(results, i) -> [Enum.at(collection, i) | acc]
@@ -32,7 +32,7 @@ defmodule Parallex do
 
   ## Examples
 
-      iex> Parallex.pmap([1, 2, 3, 4], fn x -> x*x end)
+      iex> Parallex.pmap([1, 2, 3, 4], fn(x) -> x * x end)
       [1, 4, 9, 16]
 
   """
